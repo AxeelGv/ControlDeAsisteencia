@@ -45,4 +45,25 @@ namespace ControlDeAsisteencia
 
         }
     }
+
+    public static class EstudianteExtensions
+    {
+
+        public static void MostrarInformacion(this Universidad.Estudiante estudiante)
+        {
+
+            double porcentaje = Universidad.Estudiante.Asistencia.CalcularPorcentaje(estudiante.TotalSesiones, estudiante.SesionesAsistidas);
+
+
+            bool cumpleMinimo = Universidad.Estudiante.Asistencia.CumpleMinimo(estudiante.TotalSesiones, estudiante.SesionesAsistidas);
+
+
+            Console.WriteLine($"Nombre: {estudiante.Nombre}");
+            Console.WriteLine($"Total de Sesiones: {estudiante.TotalSesiones}");
+            Console.WriteLine($"Sesiones Asistidas: {estudiante.SesionesAsistidas}");
+            Console.WriteLine($"Porcentaje de Asistencia: {porcentaje:0.00}%");
+            Console.WriteLine(cumpleMinimo ? "Cumple con el mínimo de asistencia (75%)." : "NO cumple con el mínimo de asistencia (75%).");
+        }
+    }
+
 }
